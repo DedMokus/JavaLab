@@ -1,6 +1,6 @@
 public class IfraCage extends Cage{
     public IfraCage(){
-        super("ColdBlooded");
+        super("Model.ColdBlooded");
     }
 
     @Override

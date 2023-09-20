@@ -1,3 +1,5 @@
+package Model;
+
 public class OpenCage extends Cage{
     public OpenCage(){
         super("Model.Hoofed");
