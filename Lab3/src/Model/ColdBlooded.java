@@ -10,11 +10,11 @@ public class ColdBlooded extends Creature{
     @Override
     public void Move(List<Cage> Cages) {
         for (Cage cage:Cages) {
-            if (Objects.equals(cage.GetFor(), "Model.ColdBlooded")) cage.putCreature(this);
+            if (Objects.equals(cage.GetFor(), "ColdBlooded")) cage.putCreature(this);
         }
     }
 
     public String ToString(){
-        return "Class - Model.ColdBlooded, Age - " + this.age + " Weight - " + this.weight;
+        return "Class - ColdBlooded, Age - " + this.age + " Weight - " + this.weight;
     }
 }

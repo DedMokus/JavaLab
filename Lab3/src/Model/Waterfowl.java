@@ -10,7 +10,7 @@ public class Waterfowl extends Creature {
     @Override
     public void Move(List<Cage> Cages) {
         for (Cage cage:Cages) {
-            if (Objects.equals(cage.GetFor(), "Model.Waterfowl")) cage.putCreature(this);
+            if (Objects.equals(cage.GetFor(), "Waterfowl")) cage.putCreature(this);
         }
     }
 

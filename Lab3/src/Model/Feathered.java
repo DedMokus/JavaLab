@@ -10,11 +10,11 @@ public class Feathered extends Creature{
     @Override
     public void Move(List<Cage> Cages) {
         for (Cage cage:Cages) {
-            if (Objects.equals(cage.GetFor(), "Model.Feathered")) cage.putCreature(this);
+            if (Objects.equals(cage.GetFor(), "Feathered")) cage.putCreature(this);
         }
     }
 
     public String ToString(){
-        return "Class - Model.Feathered, Age - " + this.age + " Weight - " + this.weight;
+        return "Class - Feathered, Age - " + this.age + " Weight - " + this.weight;
     }
 }

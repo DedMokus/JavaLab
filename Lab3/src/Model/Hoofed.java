@@ -10,11 +10,11 @@ public class Hoofed extends Creature{
     @Override
     public void Move(List<Cage> Cages) {
         for (Cage cage:Cages) {
-            if (Objects.equals(cage.GetFor(), "Model.Hoofed")) cage.putCreature(this);
+            if (Objects.equals(cage.GetFor(), "Hoofed")) cage.putCreature(this);
         }
     }
 
     public String ToString(){
-        return "Class - Model.Hoofed, Age - " + this.age + " Weight - " + this.weight;
+        return "Class - Hoofed, Age - " + this.age + " Weight - " + this.weight;
     }
 }

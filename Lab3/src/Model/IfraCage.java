@@ -2,7 +2,7 @@ package Model;
 
 public class IfraCage extends Cage{
     public IfraCage(){
-        super("Model.ColdBlooded");
+        super("ColdBlooded");
     }
 
     @Override

@@ -2,6 +2,8 @@ package Model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
 public abstract class Cage {
     protected int volume = 0;
 
@@ -10,6 +12,12 @@ public abstract class Cage {
 
     public Cage(String ForCre){
         this.For = ForCre;
+    }
+
+    @Override
+    public boolean equals(Object obj)
+    {
+        return Objects.equals(((Cage) obj).For, this.For);
     }
 
 
