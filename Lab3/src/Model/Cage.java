@@ -8,7 +8,7 @@ public abstract class Cage {
     protected int volume = 0;
 
     protected String For;
-    List<Creature> CagedAnimals = new ArrayList<Creature>();
+    public List<Creature> CagedAnimals = new ArrayList<Creature>();
 
     public Cage(String ForCre){
         this.For = ForCre;
@@ -32,6 +32,8 @@ public abstract class Cage {
         }
         return str.toString();
     }
+
+    public int Length(){ return CagedAnimals.toArray().length;}
 
     public String GetFor(){
         return For;
