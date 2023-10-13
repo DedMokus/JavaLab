@@ -2,23 +2,30 @@ package Viev;
 
 import Model.Cage;
 
+import javax.swing.*;
 import java.util.List;
 
-abstract class MenuItem {
-    protected String ItemName;
+abstract public class MenuItem {
+    final static public int extraWidth = 100;
 
-    public MenuItem(String name){
-        ItemName = name;
+    public String ItemName = "";
+
+    protected JPanel card = new JPanel() {
+
+    };
+
+    public JPanel getPanel(){
+        return card;
     }
 
-    public void MainFunction(List<Cage> cages){
-
+    public String getItemName(){
+        return ItemName;
     }
 
-    public void Display(){
+    public JPanel FillCard(List<Cage> cages){
 
+        return null;
     }
-
     /*Менюшки:
     Создание массива зверей
     Запись в файл(мб при выходе)

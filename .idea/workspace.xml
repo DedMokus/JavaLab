@@ -5,9 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d53dc2f7-5aec-4f81-878d-dcfbf9ef6c2a" name="Changes" comment="Lab3.3">
-      <change afterPath="$PROJECT_DIR$/Lab3/src/Controller/Logger.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lab3/src/Viev/Menu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lab3/src/Controller/Proper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lab3/src/Prog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab3/src/Controller/Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab3/src/Controller/Logger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab3/src/Model/CreaturesAndCages.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab3/src/Model/CreaturesAndCages.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab3/src/Viev/DiscRead.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab3/src/Viev/DiscRead.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab3/src/Viev/DiskRecord.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab3/src/Viev/Input.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab3/src/Viev/Input.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab3/src/Viev/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab3/src/Viev/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab3/src/Viev/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab3/src/Viev/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab3/src/Viev/MenuItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab3/src/Viev/MenuItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab3/src/Viev/Output.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab3/src/Viev/Output.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +66,15 @@
       <recent name="Viev" />
       <recent name="" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Lab3" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Prog" />
+      <module name="JavaLab" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
