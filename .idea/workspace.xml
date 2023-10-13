@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d53dc2f7-5aec-4f81-878d-dcfbf9ef6c2a" name="Changes" comment="Lab3.2">
-      <change afterPath="$PROJECT_DIR$/Lab3/src/Viev/DiscRead.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lab3/src/Viev/DiskRecord.java" afterDir="false" />
+    <list default="true" id="d53dc2f7-5aec-4f81-878d-dcfbf9ef6c2a" name="Changes" comment="Lab3.3">
+      <change afterPath="$PROJECT_DIR$/Lab3/src/Controller/Logger.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lab3/src/Viev/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab3/src/Model/Cage.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab3/src/Model/Cage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab3/src/Model/CreaturesAndCages.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab3/src/Model/CreaturesAndCages.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab3/src/Viev/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab3/src/Viev/MainMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,21 +33,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_directory_selection": "C:/Users/Mokus/IdeaProjects/JavaLab/Lab3/src/Model",
-    "last_opened_file_path": "C:/Users/Mokus/IdeaProjects/JavaLab/Lab3/src",
-    "onboarding.tips.debug.path": "E:/Share/Projects/Java/JavaLab/src/Main.java",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "project.propCompiler"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/Mokus/IdeaProjects/JavaLab/Lab3/src/Model&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Mokus/IdeaProjects/JavaLab/Lab3/src&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;E:/Share/Projects/Java/JavaLab/src/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propCompiler&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Mokus\IdeaProjects\JavaLab\Lab3\src" />
@@ -86,7 +83,15 @@
       <option name="project" value="LOCAL" />
       <updated>1696494103384</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Lab3.3">
+      <option name="closed" value="true" />
+      <created>1696588900177</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1696588900177</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -95,6 +100,7 @@
     </ignored-roots>
     <MESSAGE value="Lab3.1" />
     <MESSAGE value="Lab3.2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Lab3.2" />
+    <MESSAGE value="Lab3.3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lab3.3" />
   </component>
 </project>
