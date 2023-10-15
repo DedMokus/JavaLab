@@ -43,6 +43,9 @@ public class Prog {
                 iterCreature.next().Move(Cages);
             }
         }
+        if (Boolean.parseBoolean(prop.getProperties().getProperty("tests"))){
+            menu.test(Cages);
+        }
         if (Boolean.parseBoolean(prop.getProperties().getProperty("debug"))){
             menu.RenderMenuDebug(Cages);
         }

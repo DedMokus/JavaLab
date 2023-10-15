@@ -262,8 +262,7 @@ public class Menu {
         }
     }
 
-
-
-
-
+    public void test(List<Cage> cages){
+        System.out.println("Netu");
+    }
 }
