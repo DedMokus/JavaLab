@@ -15,7 +15,7 @@ public class Waterfowl extends Creature {
     }
 
     public String ToString(){
-        return "Class - waterfowl, Age - " + this.age + " Weight - " + this.weight;
+        return "Class - Waterfowl, Age - " + this.age + ", Weight - " + this.weight;
     }
 }
 

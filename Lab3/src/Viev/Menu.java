@@ -3,14 +3,8 @@ package Viev;
 import Controller.Logger;
 import Model.*;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Properties;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
 
 import static Controller.Logger.Level;
@@ -47,8 +41,8 @@ public class Menu {
             System.out.println("Choose Menu:");
             System.out.println("1. Output data");
             System.out.println("2. New animal");
-            System.out.println("3. Data load");
-            System.out.println("4. Data record");
+            System.out.println("3. Data from disk");
+            System.out.println("4. Data to disk");
             System.out.println("5. Exit");
 
             System.out.println("\n");
@@ -71,20 +65,69 @@ public class Menu {
         logger.Log("RenderMenu end",Level.DEBUG);
     }
 
+    public void RenderMenuDebug(List<Cage> cages)
+    {
+        logger.Log("RenderMenu begin",Level.DEBUG);
+        boolean conti = true;
+        while(conti) {
+            int i = 0;
+            System.out.flush();
+            System.out.println("Choose Menu:");
+            System.out.println("1. Output data");
+            System.out.println("2. New animal");
+            System.out.println("3. Data from disk");
+            System.out.println("4. Data to disk");
+            System.out.println("5. Exit");
+            System.out.println("6. Clear data");
+
+            System.out.println("\n");
+
+            Scanner in = new Scanner(System.in);
+            System.out.println("Input number of menu\n");
+            i = in.nextInt();
+
+            switch (i) {
+                case 1 -> Output(cages);
+                case 2 -> Input(cages);
+                case 3 -> cages = DiskRead();
+                case 4 -> DiskRecord(cages);
+                case 5 -> conti = false;
+                case 6 -> {
+                    cages = null;
+                    System.gc();
+                }
+
+                default -> System.out.println("Input correct int!");
+            }
+
+        }
+        logger.Log("RenderMenu end",Level.DEBUG);
+    }
+
     public void Output(List<Cage> cages)
     {
-        logger.Log("Output method begin",Level.DEBUG);
-        System.out.flush();
-        Iterator<Cage> iter = cages.iterator();
-        for (Cage cage:cages) {
-            System.out.println(cage.ToString());
-        }
         try {
-            System.in.read();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+            logger.Log("Output method begin", Level.DEBUG);
+            System.out.flush();
+            Iterator<Cage> iter = cages.iterator();
+            for (Cage cage : cages) {
+                System.out.println(cage.ToString());
+            }
+            try {
+                System.out.println("Enter to continue");
+                System.in.read();
+            }
+            catch (IOException e)
+            {
+                logger.Log(e.getMessage(),Level.ERROR);
+                throw new RuntimeException(e);
+            }
         }
-
+        catch (NullPointerException e)
+        {
+            System.out.println("Empty array!");
+            logger.Log(e.getMessage(),Level.ERROR);
+        }
         logger.Log("Output method end",Level.DEBUG);
     }
 
@@ -118,9 +161,13 @@ public class Menu {
                 i = cages.lastIndexOf(new Aquarium());
                 cages.get(i).putCreature(new Waterfowl(weight, age));
             }
-            default -> System.out.println("Incorrect class name!");
+            default -> {
+                System.out.println("Incorrect class name!");
+                logger.Log("Incorrect class name!",Level.ERROR);
+            }
         }
         try {
+            System.out.println("Enter to continue");
             System.in.read();
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -130,8 +177,58 @@ public class Menu {
 
     public List<Cage> DiskRead()
     {
+        logger.Log("Disk Read method begin",Level.DEBUG);
+        String temp = "";
 
-        return null;
+        List<Cage> Cages = new ArrayList<Cage>(Arrays.asList(new Aquarium(),new GridCage(),new IfraCage(),new OpenCage()));
+
+        try
+        {
+            BufferedReader breader = new BufferedReader(new FileReader("data.txt"));
+
+            int a = Integer.parseInt(breader.readLine());
+            for (int i = 0; i <a ; i++) {
+                int CreaCount = Integer.parseInt(breader.readLine());
+                for(int j = 0; j < CreaCount; j++){
+                    temp = breader.readLine();
+                    String[] info = temp.split(", ");
+                    switch (info[0]){
+                        case "Class - Feathered" -> {
+                            int age = Integer.parseInt(info[1].split(" ")[2]);
+                            float weight = Float.parseFloat(info[2].split(" ")[2]);
+                            Cages.get(1).putCreature(new Feathered(weight,age));
+                        }
+                        case "Class - Waterfowl" -> {
+                            int age = Integer.parseInt(info[1].split(" ")[2]);
+                            float weight = Float.parseFloat(info[2].split(" ")[2]);
+                            Cages.get(0).putCreature(new Waterfowl(weight,age));
+                        }
+                        case "Class - ColdBlooded" ->{
+                            int age = Integer.parseInt(info[1].split(" ")[2]);
+                            float weight = Float.parseFloat(info[2].split(" ")[2]);
+                            Cages.get(2).putCreature(new ColdBlooded(weight,age));
+                        }
+                        case "Class - Hoofed" -> {
+                            int age = Integer.parseInt(info[1].split(" ")[2]);
+                            float weight = Float.parseFloat(info[2].split(" ")[2]);
+                            Cages.get(3).putCreature(new Hoofed(weight,age));
+                        }
+                        default -> {}
+                    }
+                }
+            }
+        } catch (IOException e) {
+            logger.Log(e.getMessage(),Level.ERROR);
+            System.out.println(e.getMessage());
+        }
+        try {
+            System.out.println("Enter to continue");
+            System.in.read();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        logger.Log("Disk Reader method end",Level.DEBUG);
+        return Cages;
     }
 
     public void DiskRecord(List<Cage> cages)
@@ -139,16 +236,16 @@ public class Menu {
         logger.Log("Disk Record method begin", Level.DEBUG);
         try(FileWriter recorder = new FileWriter("data.txt",false))
         {
-            recorder.append((char)cages.toArray().length);
+            recorder.append(cages.toArray().length+"\n");
             for(Cage cage:cages)
             {
-                recorder.append(cage.GetFor());
-                recorder.append((char)cage.Length());
+                recorder.append(cage.Length()+"\n");
                 for(Creature crea:cage.CagedAnimals){
-                    recorder.append(crea.ToString());
+                    recorder.append(crea.ToString()+"\n");
                 }
             }
             recorder.flush();
+
             logger.Log("Disk Record method end",Level.DEBUG);
         }
         catch (IOException ex)
@@ -156,7 +253,9 @@ public class Menu {
             System.out.println(ex.getMessage());
             logger.Log(ex.getMessage(),Level.ERROR);
         }
+
         try {
+            System.out.println("Enter to continue");
             System.in.read();
         } catch (IOException e) {
             throw new RuntimeException(e);

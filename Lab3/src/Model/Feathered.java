@@ -15,6 +15,6 @@ public class Feathered extends Creature{
     }
 
     public String ToString(){
-        return "Class - Feathered, Age - " + this.age + " Weight - " + this.weight;
+        return "Class - Feathered, Age - " + this.age + ", Weight - " + this.weight;
     }
 }

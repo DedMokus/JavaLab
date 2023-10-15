@@ -15,6 +15,6 @@ public class Hoofed extends Creature{
     }
 
     public String ToString(){
-        return "Class - Hoofed, Age - " + this.age + " Weight - " + this.weight;
+        return "Class - Hoofed, Age - " + this.age + ", Weight - " + this.weight;
     }
 }

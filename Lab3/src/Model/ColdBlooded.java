@@ -15,6 +15,6 @@ public class ColdBlooded extends Creature{
     }
 
     public String ToString(){
-        return "Class - ColdBlooded, Age - " + this.age + " Weight - " + this.weight;
+        return "Class - ColdBlooded, Age - " + this.age + ", Weight - " + this.weight;
     }
 }

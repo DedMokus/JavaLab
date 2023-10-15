@@ -43,8 +43,12 @@ public class Prog {
                 iterCreature.next().Move(Cages);
             }
         }
-
-        menu.RenderMenu(Cages);
+        if (Boolean.parseBoolean(prop.getProperties().getProperty("debug"))){
+            menu.RenderMenuDebug(Cages);
+        }
+        else {
+            menu.RenderMenu(Cages);
+        }
         logger.Log("Main app end", Logger.Level.DEBUG);
     }
 }
