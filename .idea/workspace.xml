@@ -4,17 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d53dc2f7-5aec-4f81-878d-dcfbf9ef6c2a" name="Changes" comment="Lab3.5">
+    <list default="true" id="d53dc2f7-5aec-4f81-878d-dcfbf9ef6c2a" name="Changes" comment="Lab3.4">
+      <change afterPath="$PROJECT_DIR$/Lab4/src/Controller/Logger.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lab4/src/Controller/Proper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lab4/src/Model/Aquarium.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lab4/src/Model/Cage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lab4/src/Model/ColdBlooded.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lab4/src/Model/Creature.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lab4/src/Model/Feathered.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lab4/src/Model/GridCage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lab4/src/Model/Hoofed.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lab4/src/Model/IfraCage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lab4/src/Model/OpenCage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lab4/src/Model/Waterfowl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lab4/src/Prog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lab4/src/Viev/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab3/src/Controller/Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab3/src/Controller/Logger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab3/src/Model/ColdBlooded.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab3/src/Model/ColdBlooded.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab3/src/Model/Feathered.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab3/src/Model/Feathered.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab3/src/Model/Hoofed.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab3/src/Model/Hoofed.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab3/src/Model/Waterfowl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab3/src/Model/Waterfowl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab3/src/Model/CreaturesAndCages.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Lab3/src/Prog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab3/src/Prog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab3/src/Viev/DiscRead.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab3/src/Viev/DiscRead.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab3/src/Viev/DiscRead.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab3/src/Viev/Input.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab3/src/Viev/MainMenu.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Lab3/src/Viev/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab3/src/Viev/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prog.properties" beforeDir="false" afterPath="$PROJECT_DIR$/prog.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab3/src/Viev/MenuItem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab3/src/Viev/Output.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,23 +53,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_directory_selection&quot;: &quot;C:/Users/Mokus/IdeaProjects/JavaLab/Lab3/src/Model&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Mokus/IdeaProjects/JavaLab/Lab3/src&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;E:/Share/Projects/Java/JavaLab/src/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propCompiler&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_directory_selection": "C:/Users/Mokus/IdeaProjects/JavaLab/Lab3/src/Model",
+    "last_opened_file_path": "C:/Users/Mokus/IdeaProjects/JavaLab/Lab4",
+    "onboarding.tips.debug.path": "E:/Share/Projects/Java/JavaLab/src/Main.java",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "project.propCompiler"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Mokus\IdeaProjects\JavaLab\Lab4" />
       <recent name="C:\Users\Mokus\IdeaProjects\JavaLab\Lab3\src" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -127,16 +141,5 @@
     <MESSAGE value="Lab3.3" />
     <MESSAGE value="Lab3.5" />
     <option name="LAST_COMMIT_MESSAGE" value="Lab3.5" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Lab3/src/Viev/Menu.java</url>
-          <line>177</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
