@@ -1,5 +1,6 @@
 package Model;
 
+import java.time.LocalTime;
 import java.util.*;
 
 public abstract class Cage {
@@ -24,6 +25,118 @@ public abstract class Cage {
 
     public void putCreature(Creature creature){
         this.CagedAnimals.add(creature);
+    }
+
+    public long[] RandomCreaturePut(int count){
+
+        long[] times = new long[count+1];
+
+        long starttime = System.nanoTime();
+
+        Random randomizer = new Random();
+        for(int i = 0; i < count; i++){
+            long st = System.nanoTime();
+            switch (For){
+                case "Hoofed" -> {
+                    Creature temp = new Hoofed(randomizer.nextDouble(),randomizer.nextInt());
+                    CagedAnimals.add(temp);
+                }
+                case "ColdBlooded" -> {
+                    Creature temp = new ColdBlooded(randomizer.nextDouble(),randomizer.nextInt());
+                    CagedAnimals.add(temp);
+                }
+                case "Feathered" -> {
+                    Creature temp = new Feathered(randomizer.nextDouble(),randomizer.nextInt());
+                    CagedAnimals.add(temp);
+                }
+                case "Waterfowl" -> {
+                    Creature temp = new Waterfowl(randomizer.nextDouble(),randomizer.nextInt());
+                    CagedAnimals.add(temp);
+                }
+            }
+            long ed = System.nanoTime();
+            times[i] = ed-st;
+        }
+
+        long endtime = System.nanoTime();
+        times[count] = endtime - starttime;
+        return times;
+    }
+
+    public long[] RandomCreaturePutMap(int count){
+
+        long[] times = new long[count+1];
+
+        long starttime = System.nanoTime();
+
+        Random randomizer = new Random();
+        for(int i = 0; i < count; i++){
+            long st = System.nanoTime();
+            switch (For){
+                case "Hoofed" -> {
+                    Creature temp = new Hoofed(randomizer.nextDouble(),randomizer.nextInt());
+                    CagedAnimalsMap.put(i,temp);
+                }
+                case "ColdBlooded" -> {
+                    Creature temp = new ColdBlooded(randomizer.nextDouble(),randomizer.nextInt());
+                    CagedAnimalsMap.put(i,temp);
+                }
+                case "Feathered" -> {
+                    Creature temp = new Feathered(randomizer.nextDouble(),randomizer.nextInt());
+                    CagedAnimalsMap.put(i,temp);
+                }
+                case "Waterfowl" -> {
+                    Creature temp = new Waterfowl(randomizer.nextDouble(),randomizer.nextInt());
+                    CagedAnimalsMap.put(i,temp);
+                }
+            }
+            long ed = System.nanoTime();
+            times[i] = ed-st;
+        }
+
+        long endtime = System.nanoTime();
+        times[count] = endtime - starttime;
+        return times;
+    }
+
+    public long[] RandomRemove(int count){
+        long[] times = new long[count+1];
+
+        long starttime = System.nanoTime();
+
+        Random randomizer = new Random();
+
+        for(int i = 0; i < count/10; i++) {
+            long st = System.nanoTime();
+
+            CagedAnimals.remove(randomizer.nextInt(CagedAnimals.size()/2));
+
+            long ed = System.nanoTime();
+            times[i] = ed-st;
+        }
+        long endtime = System.nanoTime();
+        times[count] = endtime - starttime;
+        return times;
+    }
+
+    public long[] RandomRemoveMap(int count){
+        long[] times = new long[count+1];
+
+        long starttime = System.nanoTime();
+
+        Random randomizer = new Random();
+
+        for(int i = 0; i < count/10; i++) {
+            long st = System.nanoTime();
+
+            CagedAnimalsMap.remove(randomizer.nextInt(CagedAnimalsMap.size()/2));
+
+            long ed = System.nanoTime();
+            times[i] = ed-st;
+        }
+        long endtime = System.nanoTime();
+        times[count] = endtime - starttime;
+        return times;
     }
 
     public void putCreatureMap(Creature creature){
