@@ -49,18 +49,20 @@ public class Prog {
         login = in.nextLine();
         System.out.println("Input password");
         password = in.nextLine();
+        boolean[] blogin = menu.Login(login,password);
 
-        while (!menu.Login(login,password))
+        while (!blogin[0])
         {
             System.out.println("Input login");
             login = in.nextLine();
             System.out.println("Input password");
             password = in.nextLine();
+            blogin = menu.Login(login,password);
         }
         if (Boolean.parseBoolean(prop.getProperties().getProperty("tests"))){
             menu.test(Cages);
         }
-        if (Boolean.parseBoolean(prop.getProperties().getProperty("debug"))){
+        if (blogin[1]){
             menu.RenderMenuDebug(Cages);
         }
         else {

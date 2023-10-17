@@ -3,18 +3,25 @@ package Viev;
 import Controller.Logger;
 import Model.*;
 
+import javax.swing.*;
+import java.awt.*;
 import java.io.*;
 import java.util.*;
+import java.util.List;
 
 
 import static Controller.Logger.Level;
+import static Viev.DrawGraphic.createAndShowGui;
 
 public class Menu {
 
 
     Properties properties = new Properties();
-    String login;
-    String password;
+    String loginuser;
+    String passworduser;
+
+    String loginroot;
+    String passwordroot;
     String group;
     boolean log;
     boolean checkout;
@@ -24,31 +31,40 @@ public class Menu {
             logger = new Logger(new File("log.txt"),prop);
             logger.Log("Properties loading",Level.INFO);
             properties = prop;
-            login = properties.getProperty("login");
-            password = properties.getProperty("password");
+            loginuser = properties.getProperty("users");
+            passworduser = properties.getProperty("pwduser");
+            loginroot = properties.getProperty("root");
+            passwordroot = properties.getProperty("pwdroot");
             group = properties.getProperty("group");
             log = Boolean.parseBoolean(properties.getProperty("log","false"));
             checkout = Boolean.parseBoolean(properties.getProperty("checkout","false"));
     }
 
-    public boolean Login(String login,String password)
+    public boolean[] Login(String login,String password)
     {
-        if (login.equals(this.login)||password.equals(this.password)){
-            System.out.println("Login successful!");
-            logger.Log("Login successful",Level.INFO);
-            return true;
+        if (this.loginuser.contains(login) & this.passworduser.contains(password)){
+            System.out.println("User login successful!");
+            System.out.println("Welcome, " + login + "!");
+            logger.Log("User login successful",Level.INFO);
+            return new boolean[]{true, false};
         }
         else{
+            if(this.loginroot.contains(login) & this.passwordroot.contains(password)){
+                System.out.println("Root login successful!");
+                System.out.println("Welcome, " + login + "!");
+                logger.Log("Root login successful",Level.INFO);
+                return new boolean[]{true, true};
+            }
             System.out.println("Incorrect login/password!");
             logger.Log("Incorrect login/password",Level.ERROR);
-            return false;
+            return new boolean[]{false, false};
         }
     }
 
     public void RenderMenu(List<Cage> cages)
     {
         logger.Log("RenderMenu begin",Level.DEBUG);
-        System.out.println("Welcome, " + login + "!");
+
         boolean conti = true;
         while(conti) {
             int i = 0;
@@ -59,7 +75,7 @@ public class Menu {
             System.out.println("3. Data from disk");
             System.out.println("4. Data to disk");
             System.out.println("5. Exit");
-            System.out.println("6. Random put Creatures");
+
 
             System.out.println("\n");
 
@@ -73,7 +89,7 @@ public class Menu {
                 case 3 -> cages = DiskRead();
                 case 4 -> DiskRecord(cages);
                 case 5 -> conti = false;
-                case 6 -> RandomCreatures(cages);
+
 
                 default -> System.out.println("Input correct int!");
             }
@@ -96,6 +112,8 @@ public class Menu {
             System.out.println("4. Data to disk");
             System.out.println("5. Exit");
             System.out.println("6. Clear data");
+            System.out.println("7. Random put Creatures");
+            System.out.println("8. Test with graph");
 
             System.out.println("\n");
 
@@ -113,6 +131,8 @@ public class Menu {
                     cages = null;
                     System.gc();
                 }
+                case 7 -> RandomCreatures(cages);
+                case 8 -> test(cages);
 
                 default -> System.out.println("Input correct int!");
             }
@@ -306,111 +326,144 @@ public class Menu {
     public void test(List<Cage> cages){
         logger.Log("Test begin",Level.INFO);
 
+        List<Double> data = new ArrayList<>();
+
         logger.Log("Add",Level.INFO);
         logger.Log("ArrayList 10",Level.INFO);
         long[] timeArray10 = cages.get(0).RandomCreaturePut(10);
-        logger.Log(String.format("%s = %d","Add total time",timeArray10[timeArray10.length-1]),Level.INFO);
+        logger.Log(String.format("%s = %d ns","Add total time",timeArray10[timeArray10.length-1]),Level.INFO);
         logger.Log(String.format("%s = %.2f ns","Add median time",Arrays.stream(Arrays.copyOf(timeArray10,timeArray10.length-2)).average().getAsDouble()),Level.INFO);
+        data.add(Arrays.stream(Arrays.copyOf(timeArray10,timeArray10.length-2)).average().getAsDouble());
 
         logger.Log("ArrayList 100",Level.INFO);
         long[] timeArray100 = cages.get(0).RandomCreaturePut(100);
-        logger.Log(String.format("%s = %d","Add total time",timeArray100[timeArray100.length-1]),Level.INFO);
+        logger.Log(String.format("%s = %d ns","Add total time",timeArray100[timeArray100.length-1]),Level.INFO);
         logger.Log(String.format("%s = %.2f ns","Add median time",Arrays.stream(Arrays.copyOf(timeArray100,timeArray100.length-2)).average().getAsDouble()),Level.INFO);
+        data.add(Arrays.stream(Arrays.copyOf(timeArray100,timeArray100.length-2)).average().getAsDouble());
 
         logger.Log("ArrayList 1000",Level.INFO);
         long[] timeArray1000 = cages.get(0).RandomCreaturePut(1000);
-        logger.Log(String.format("%s = %d","Add total time",timeArray1000[timeArray1000.length-1]),Level.INFO);
+        logger.Log(String.format("%s = %d ns","Add total time",timeArray1000[timeArray1000.length-1]),Level.INFO);
         logger.Log(String.format("%s = %.2f ns","Add median time",Arrays.stream(Arrays.copyOf(timeArray1000,timeArray1000.length-2)).average().getAsDouble()),Level.INFO);
+        data.add(Arrays.stream(Arrays.copyOf(timeArray1000,timeArray1000.length-2)).average().getAsDouble());
 
         logger.Log("ArrayList 10000",Level.INFO);
         long[] timeArray10000 = cages.get(0).RandomCreaturePut(10000);
-        logger.Log(String.format("%s = %d","Add total time",timeArray10000[timeArray10000.length-1]),Level.INFO);
+        logger.Log(String.format("%s = %d ns","Add total time",timeArray10000[timeArray10000.length-1]),Level.INFO);
         logger.Log(String.format("%s = %.2f ns","Add median time",Arrays.stream(Arrays.copyOf(timeArray10000,timeArray10000.length-2)).average().getAsDouble()),Level.INFO);
+        data.add(Arrays.stream(Arrays.copyOf(timeArray10000,timeArray10000.length-2)).average().getAsDouble());
 
         logger.Log("ArrayList 100000",Level.INFO);
         long[] timeArray100000 = cages.get(0).RandomCreaturePut(100000);
-        logger.Log(String.format("%s = %d","Add total time",timeArray100000[timeArray100000.length-1]),Level.INFO);
+        logger.Log(String.format("%s = %d ns","Add total time",timeArray100000[timeArray100000.length-1]),Level.INFO);
         logger.Log(String.format("%s = %.2f ns","Add median time",Arrays.stream(Arrays.copyOf(timeArray100000,timeArray100000.length-2)).average().getAsDouble()),Level.INFO);
+        data.add(Arrays.stream(Arrays.copyOf(timeArray100000,timeArray100000.length-2)).average().getAsDouble());
 
 
         logger.Log("HashMap 10",Level.INFO);
         long[] timeMap10 = cages.get(0).RandomCreaturePutMap(10);
-        logger.Log(String.format("%s = %d","Add total time",timeMap10[timeMap10.length-1]),Level.INFO);
+        logger.Log(String.format("%s = %d ns","Add total time",timeMap10[timeMap10.length-1]),Level.INFO);
         logger.Log(String.format("%s = %.2f ns","Add median time",Arrays.stream(Arrays.copyOf(timeMap10,timeMap10.length-2)).average().getAsDouble()),Level.INFO);
+        data.add(Arrays.stream(Arrays.copyOf(timeMap10,timeMap10.length-2)).average().getAsDouble());
 
         logger.Log("HashMap 100",Level.INFO);
         long[] timeMap100 = cages.get(0).RandomCreaturePutMap(100);
-        logger.Log(String.format("%s = %d","Add total time",timeMap100[timeMap100.length-1]),Level.INFO);
+        logger.Log(String.format("%s = %d ns","Add total time",timeMap100[timeMap100.length-1]),Level.INFO);
         logger.Log(String.format("%s = %.2f ns","Add median time",Arrays.stream(Arrays.copyOf(timeMap100,timeMap100.length-2)).average().getAsDouble()),Level.INFO);
+        data.add(Arrays.stream(Arrays.copyOf(timeMap100,timeMap100.length-2)).average().getAsDouble());
 
         logger.Log("HashMap 1000",Level.INFO);
         long[] timeMap1000 = cages.get(0).RandomCreaturePutMap(1000);
-        logger.Log(String.format("%s = %d","Add total time",timeMap1000[timeMap1000.length-1]),Level.INFO);
+        logger.Log(String.format("%s = %d ns","Add total time",timeMap1000[timeMap1000.length-1]),Level.INFO);
         logger.Log(String.format("%s = %.2f ns","Add median time",Arrays.stream(Arrays.copyOf(timeMap1000,timeMap1000.length-2)).average().getAsDouble()),Level.INFO);
+        data.add(Arrays.stream(Arrays.copyOf(timeMap1000,timeMap1000.length-2)).average().getAsDouble());
 
         logger.Log("HashMap 10000",Level.INFO);
         long[] timeMap10000 = cages.get(0).RandomCreaturePutMap(10000);
-        logger.Log(String.format("%s = %d","Add total time",timeMap10000[timeMap10000.length-1]),Level.INFO);
+        logger.Log(String.format("%s = %d ns","Add total time",timeMap10000[timeMap10000.length-1]),Level.INFO);
         logger.Log(String.format("%s = %.2f ns","Add median time",Arrays.stream(Arrays.copyOf(timeMap10000,timeMap10000.length-2)).average().getAsDouble()),Level.INFO);
+        data.add(Arrays.stream(Arrays.copyOf(timeMap10000,timeMap10000.length-2)).average().getAsDouble());
 
         logger.Log("HashMap 100000",Level.INFO);
         long[] timeMap100000 = cages.get(0).RandomCreaturePutMap(100000);
-        logger.Log(String.format("%s = %d","Add total time",timeMap100000[timeMap100000.length-1]),Level.INFO);
+        logger.Log(String.format("%s = %d ns","Add total time",timeMap100000[timeMap100000.length-1]),Level.INFO);
         logger.Log(String.format("%s = %.2f ns","Add median time",Arrays.stream(Arrays.copyOf(timeMap100000,timeMap100000.length-2)).average().getAsDouble()),Level.INFO);
+        data.add(Arrays.stream(Arrays.copyOf(timeMap100000,timeMap100000.length-2)).average().getAsDouble());
 
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                createAndShowGui(data,Color.BLUE,"Add time Compare");
+            }
+        });
+
+        List<Double> data2 = new ArrayList<>();
 
         logger.Log("Remove",Level.INFO);
         logger.Log("ArrayList 10",Level.INFO);
         timeArray10 = cages.get(0).RandomRemove(10);
-        logger.Log(String.format("%s = %d","Add total time",timeArray10[timeArray10.length-1]),Level.INFO);
+        logger.Log(String.format("%s = %d ns","Add total time",timeArray10[timeArray10.length-1]),Level.INFO);
         logger.Log(String.format("%s = %.2f ns","Add median time",Arrays.stream(Arrays.copyOf(timeArray10,timeArray10.length-2)).average().getAsDouble()),Level.INFO);
+        data2.add(Arrays.stream(Arrays.copyOf(timeArray10,timeArray10.length-2)).average().getAsDouble());
 
         logger.Log("ArrayList 100",Level.INFO);
         timeArray100 = cages.get(0).RandomRemove(100);
-        logger.Log(String.format("%s = %d","Add total time",timeArray100[timeArray100.length-1]),Level.INFO);
+        logger.Log(String.format("%s = %d ns","Add total time",timeArray100[timeArray100.length-1]),Level.INFO);
         logger.Log(String.format("%s = %.2f ns","Add median time",Arrays.stream(Arrays.copyOf(timeArray100,timeArray100.length-2)).average().getAsDouble()),Level.INFO);
+        data2.add(Arrays.stream(Arrays.copyOf(timeArray100,timeArray100.length-2)).average().getAsDouble());
 
         logger.Log("ArrayList 1000",Level.INFO);
         timeArray1000 = cages.get(0).RandomRemove(1000);
-        logger.Log(String.format("%s = %d","Add total time",timeArray1000[timeArray1000.length-1]),Level.INFO);
+        logger.Log(String.format("%s = %d ns","Add total time",timeArray1000[timeArray1000.length-1]),Level.INFO);
         logger.Log(String.format("%s = %.2f ns","Add median time",Arrays.stream(Arrays.copyOf(timeArray1000,timeArray1000.length-2)).average().getAsDouble()),Level.INFO);
+        data2.add(Arrays.stream(Arrays.copyOf(timeArray1000,timeArray1000.length-2)).average().getAsDouble());
 
         logger.Log("ArrayList 10000",Level.INFO);
         timeArray10000 = cages.get(0).RandomRemove(10000);
-        logger.Log(String.format("%s = %d","Add total time",timeArray10000[timeArray10000.length-1]),Level.INFO);
+        logger.Log(String.format("%s = %d ns","Add total time",timeArray10000[timeArray10000.length-1]),Level.INFO);
         logger.Log(String.format("%s = %.2f ns","Add median time",Arrays.stream(Arrays.copyOf(timeArray10000,timeArray10000.length-2)).average().getAsDouble()),Level.INFO);
+        data2.add(Arrays.stream(Arrays.copyOf(timeArray10000,timeArray10000.length-2)).average().getAsDouble());
 
         logger.Log("ArrayList 100000",Level.INFO);
         timeArray100000 = cages.get(0).RandomRemove(100000);
-        logger.Log(String.format("%s = %d","Add total time",timeArray100000[timeArray100000.length-1]),Level.INFO);
+        logger.Log(String.format("%s = %d ns","Add total time",timeArray100000[timeArray100000.length-1]),Level.INFO);
         logger.Log(String.format("%s = %.2f ns","Add median time",Arrays.stream(Arrays.copyOf(timeArray100000,timeArray100000.length-2)).average().getAsDouble()),Level.INFO);
+        data2.add(Arrays.stream(Arrays.copyOf(timeArray100000,timeArray100000.length-2)).average().getAsDouble());
 
         logger.Log("HashMap 10",Level.INFO);
         timeMap10 = cages.get(0).RandomRemoveMap(10);
-        logger.Log(String.format("%s = %d","Add total time",timeMap10[timeMap10.length-1]),Level.INFO);
+        logger.Log(String.format("%s = %d ns","Add total time",timeMap10[timeMap10.length-1]),Level.INFO);
         logger.Log(String.format("%s = %.2f ns","Add median time",Arrays.stream(Arrays.copyOf(timeMap10,timeMap10.length-2)).average().getAsDouble()),Level.INFO);
+        data2.add(Arrays.stream(Arrays.copyOf(timeMap10,timeMap10.length-2)).average().getAsDouble());
 
         logger.Log("HashMap 100",Level.INFO);
         timeMap100 = cages.get(0).RandomRemoveMap(100);
-        logger.Log(String.format("%s = %d","Add total time",timeMap100[timeMap100.length-1]),Level.INFO);
+        logger.Log(String.format("%s = %d ns","Add total time",timeMap100[timeMap100.length-1]),Level.INFO);
         logger.Log(String.format("%s = %.2f ns","Add median time",Arrays.stream(Arrays.copyOf(timeMap100,timeMap100.length-2)).average().getAsDouble()),Level.INFO);
+        data2.add(Arrays.stream(Arrays.copyOf(timeMap100,timeMap100.length-2)).average().getAsDouble());
 
         logger.Log("HashMap 1000",Level.INFO);
         timeMap1000 = cages.get(0).RandomRemoveMap(1000);
-        logger.Log(String.format("%s = %d","Add total time",timeMap1000[timeMap1000.length-1]),Level.INFO);
+        logger.Log(String.format("%s = %d ns","Add total time",timeMap1000[timeMap1000.length-1]),Level.INFO);
         logger.Log(String.format("%s = %.2f ns","Add median time",Arrays.stream(Arrays.copyOf(timeMap1000,timeMap1000.length-2)).average().getAsDouble()),Level.INFO);
+        data2.add(Arrays.stream(Arrays.copyOf(timeMap1000,timeMap1000.length-2)).average().getAsDouble());
 
         logger.Log("HashMap 10000",Level.INFO);
         timeMap10000 = cages.get(0).RandomRemoveMap(10000);
-        logger.Log(String.format("%s = %d","Add total time",timeMap10000[timeMap10000.length-1]),Level.INFO);
+        logger.Log(String.format("%s = %d ns","Add total time",timeMap10000[timeMap10000.length-1]),Level.INFO);
         logger.Log(String.format("%s = %.2f ns","Add median time",Arrays.stream(Arrays.copyOf(timeMap10000,timeMap10000.length-2)).average().getAsDouble()),Level.INFO);
+        data2.add(Arrays.stream(Arrays.copyOf(timeMap10000,timeMap10000.length-2)).average().getAsDouble());
 
         logger.Log("HashMap 100000",Level.INFO);
         timeMap100000 = cages.get(0).RandomRemoveMap(100000);
-        logger.Log(String.format("%s = %d","Add total time",timeMap100000[timeMap100000.length-1]),Level.INFO);
+        logger.Log(String.format("%s = %d ns","Add total time",timeMap100000[timeMap100000.length-1]),Level.INFO);
         logger.Log(String.format("%s = %.2f ns","Add median time",Arrays.stream(Arrays.copyOf(timeMap100000,timeMap100000.length-2)).average().getAsDouble()),Level.INFO);
+        data2.add(Arrays.stream(Arrays.copyOf(timeMap100000,timeMap100000.length-2)).average().getAsDouble());
 
-
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                createAndShowGui(data2, Color.RED,"Remove time Compare");
+            }
+        });
         logger.Log("Test end",Level.INFO);
     }
 }
