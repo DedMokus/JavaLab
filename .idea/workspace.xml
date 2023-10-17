@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d53dc2f7-5aec-4f81-878d-dcfbf9ef6c2a" name="Changes" comment="Lab4.2 Tests and Random fill">
-      <change afterPath="$PROJECT_DIR$/Lab4/src/Viev/DrawGraphic.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lab6/src/AlarmClock.java" afterDir="false" />
+    <list default="true" id="d53dc2f7-5aec-4f81-878d-dcfbf9ef6c2a" name="Changes" comment="Labs 5 and 6">
+      <change afterPath="$PROJECT_DIR$/Lab7/src/Car.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lab7/src/Race.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab4/src/Prog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab4/src/Prog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lab4/src/Viev/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab4/src/Viev/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prog.properties" beforeDir="false" afterPath="$PROJECT_DIR$/prog.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lab6/src/AlarmClock.java" beforeDir="false" afterPath="$PROJECT_DIR$/Lab6/src/AlarmClock.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +49,7 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "project.propCompiler"
+    "settings.editor.selected.configurable": "inlay.hints"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -65,7 +63,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Lab6">
+  <component name="RunManager" selected="Application.Lab7">
     <configuration name="Lab3" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Prog" />
       <module name="JavaLab" />
@@ -87,10 +85,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Lab7" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Race" />
+      <module name="JavaLab" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.Lab3" />
       <item itemvalue="Application.Lab4" />
       <item itemvalue="Application.Lab6" />
+      <item itemvalue="Application.Lab7" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -142,7 +148,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697479352669</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Labs 5 and 6">
+      <option name="closed" value="true" />
+      <created>1697507584528</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1697507584528</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -154,6 +168,7 @@
     <MESSAGE value="Lab3.3" />
     <MESSAGE value="Lab3.5" />
     <MESSAGE value="Lab4.2 Tests and Random fill" />
-    <option name="LAST_COMMIT_MESSAGE" value="Lab4.2 Tests and Random fill" />
+    <MESSAGE value="Labs 5 and 6" />
+    <option name="LAST_COMMIT_MESSAGE" value="Labs 5 and 6" />
   </component>
 </project>

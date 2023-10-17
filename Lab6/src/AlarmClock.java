@@ -75,29 +75,6 @@ public class AlarmClock  {
         Insets i = new Insets(2,3,2,3);
         c.insets = i;
 
-        /*JButton MinUp = new JButton("+1");
-        c.gridx = 0;
-        c.gridy = 0;
-
-        MinUp.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Minutes = Minutes + 1;
-            }
-        } );
-
-        pane.add(MinUp,c);
-
-        JButton MinDown = new JButton("-1");
-        c.gridx = 0;
-        c.gridy = 2;
-        pane.add(MinDown,c);
-        MinDown.addActionListener(e -> {
-            Minutes--;
-
-        });*/
-
-
         clockMin.setFont(new Font("Arial",Font.PLAIN,30));
         clockMin.setContentAreaFilled(false);
         clockMin.setBorderPainted(false);
@@ -215,31 +192,6 @@ public class AlarmClock  {
                 clockMin.setText(Integer.toString(Minutes));
             }
         });
-
-
-
-        /*JButton button = new JButton("Clear");
-        button.addActionListener(this);
-
-        typingArea = new JTextField(20);
-        typingArea.addKeyListener(this);*/
-
-        //Uncomment this if you wish to turn off focus
-        //traversal.  The focus subsystem consumes
-        //focus traversal keys, such as Tab and Shift Tab.
-        //If you uncomment the following line of code, this
-        //disables focus traversal and the Tab events will
-        //become available to the key event listener.
-        //typingArea.setFocusTraversalKeysEnabled(false);
-
-        /*displayArea = new JTextArea();
-        displayArea.setEditable(false);
-        JScrollPane scrollPane = new JScrollPane(displayArea);
-        scrollPane.setPreferredSize(new Dimension(375, 125));
-
-        getContentPane().add(typingArea, BorderLayout.PAGE_START);
-        getContentPane().add(scrollPane, BorderLayout.CENTER);
-        getContentPane().add(button, BorderLayout.PAGE_END);*/
     }
 
     static SwingWorker sw1 = new SwingWorker() {
