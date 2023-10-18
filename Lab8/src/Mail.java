@@ -1,4 +1,5 @@
 import jakarta.mail.*;
+import jakarta.mail.internet.AddressException;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
 
@@ -7,6 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
@@ -181,14 +183,45 @@ public class Mail {
                 Mail[1] = SubjectField.getText();
                 Mail[2] = TextArea.getText();
                 MailSend.setVisible(false);
-
-                new MailSender(Mail, AuthData).start();
                 CardLayout cardLayout = (CardLayout) MainPanel.getLayout();
-                cardLayout.next(MainPanel);
+
+                if(MailSend(Mail,AuthData)){
+                    cardLayout.next(MainPanel);
+                }
+                else {
+                    cardLayout.last(MainPanel);
+                }
             }
         });
 
 
+    }
+
+    public static boolean MailSend(String[] Mail,String[] AuthData) {
+        try {
+            Authenticator auth = new Authenticator() {
+                @Override
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(AuthData[0], AuthData[1]);
+                }
+            };
+
+            Properties properties = new Properties();
+            properties.load(new FileReader(new File("Mail.properties")));
+
+            Session session = Session.getInstance(properties, auth);
+
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(AuthData[0]));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(Mail[0]));
+            message.setSubject(Mail[1]);
+            message.setText(Mail[2]);
+            Transport.send(message);
+            System.out.println("Message sent");
+            return true;
+        }catch (Exception ex){
+            return false;
+        }
     }
 
     private static void MailSendSuccessPanel(Container pane){
@@ -238,28 +271,6 @@ public class Mail {
                 e.printStackTrace();
             }
         }
-    }
-    public static void MailSend(String[] Mail,String[] AuthData) throws IOException, MessagingException {
-
-
-        Authenticator auth = new Authenticator() {
-            @Override
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(AuthData[0],AuthData[1]);
-            }
-        };
-
-        Properties properties = new Properties();
-        properties.load(new FileReader(new File("Mail.properties")));
-
-        Session session = Session.getInstance(properties,auth);
-
-        MimeMessage message = new MimeMessage(session);
-        message.setFrom(new InternetAddress(AuthData[0]));
-        message.addRecipient(Message.RecipientType.TO,new InternetAddress(Mail[0]));
-        message.setSubject(Mail[1]);
-        message.setText(Mail[2]);
-        Transport.send(message);
     }
 
     public static void main(String[] args){
